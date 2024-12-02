@@ -1,0 +1,94 @@
+{
+  "name": "esp8266",
+  "dependencies": {
+    "ESP8266_RTOS_SDK": {
+      "type": "repo",
+      "source": "https://github.com/espressif/ESP8266_RTOS_SDK.git",
+      "version": "release/v3.2"
+    },
+    "toolchain": {
+      "type": "download",
+      "os": [
+        "mac",
+        "linux",
+        "windows"
+      ],
+      "source": {
+        "mac": "https://github.com/Moddable-OpenSource/tools/releases/download/v1.0.0/esp8266.toolchain.darwin.tgz",
+        "linux": "https://github.com/Moddable-OpenSource/tools/releases/download/v1.0.0/esp8266.toolchain.linux.tgz",
+        "windows": "https://github.com/Moddable-OpenSource/tools/releases/download/v1.0.0/esp8266.toolchain.win32.tgz"
+      }
+    },
+    "esp8266-2.3.0": {
+      "type": "download",
+      "os": [
+        "mac",
+        "linux",
+        "windows"
+      ],
+      "source": "https://github.com/esp8266/Arduino/releases/download/2.3.0/esp8266-2.3.0.zip"
+    },
+    "python": {
+      "type": "package",
+      "version": "3",
+      "os": [
+        "mac"
+      ],
+      "installer": {
+        "mac": "homebrew"
+      }
+    },
+    "Python.Python.3": {
+      "type": "package",
+      "os": [
+        "windows"
+      ],
+      "installer": {
+        "windows": "winget"
+      }
+    },
+    "pyserial": {
+      "type": "package",
+      "os": [
+        "mac",
+        "windows"
+      ],
+      "installer": {
+        "mac": "pip",
+        "windows": "pip"
+      }
+    },
+    "python3-serial": {
+      "type": "package",
+      "os": [
+        "linux"
+      ],
+      "installer": {
+        "linux": "apt"
+      }
+    },
+    "python-is-python3": {
+      "type": "package",
+      "os": [
+        "linux"
+      ],
+      "installer": {
+        "linux": "apt"
+      }
+    },
+    "esptool-0.4.13-win32": {
+      "type": "download",
+      "os": [
+        "windows"
+      ],
+      "source": "https://github.com/igrr/esptool-ck/releases/download/0.4.13/esptool-0.4.13-win32.zip"
+    },
+    "cygwin": {
+      "type": "download",
+      "os": [
+        "windows"
+      ],
+      "source": "https://github.com/Moddable-OpenSource/tools/releases/download/v1.0.0/cygwin.win32.zip"
+    }
+  }
+}

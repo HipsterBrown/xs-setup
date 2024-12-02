@@ -1,0 +1,168 @@
+{
+  "name": "esp32",
+  "dependencies": {
+    "esp-idf": {
+      "type": "repo",
+      "source": "https://github.com/espressif/esp-idf.git",
+      "version": "v4.4.2",
+      "recursive": true,
+    },
+    "python": {
+      "version": "3"
+    },
+    "cmake": {
+      "type": "package",
+      "os": [
+        "mac",
+        "linux"
+      ],
+      "installer": {
+        "mac": "homebrew",
+        "linux": "apt"
+      }
+    },
+    "ninja": {
+      "type": "package",
+      "os": [
+        "mac"
+      ],
+      "installer": {
+        "mac": "homebrew"
+      }
+    },
+    "ninja-build": {
+      "type": "package",
+      "os": [
+        "linux"
+      ],
+      "installer": {
+        "linux": "apt"
+      }
+    },
+    "dfu-util": {
+      "type": "package",
+      "os": [
+        "mac"
+      ],
+      "installer": {
+        "mac": "homebrew",
+        "linux": "apt"
+      }
+    },
+    "pyserial": {
+      "type": "package",
+      "os": [
+        "mac"
+      ],
+      "installer": {
+        "mac": "pip"
+      }
+    },
+    "python3-serial": {
+      "type": "package",
+      "os": [
+        "linux"
+      ],
+      "installer": {
+        "linux": "apt"
+      }
+    },
+    "git": {
+      "type": "package",
+      "os": [
+        "linux"
+      ],
+      "installer": {
+        "linux": "apt"
+      }
+    },
+    "wget": {
+      "type": "package",
+      "os": [
+        "linux"
+      ],
+      "installer": {
+        "linux": "apt"
+      }
+    },
+    "flex": {
+      "type": "package",
+      "os": [
+        "linux"
+      ],
+      "installer": {
+        "linux": "apt"
+      }
+    },
+    "bison": {
+      "type": "package",
+      "os": [
+        "linux"
+      ],
+      "installer": {
+        "linux": "apt"
+      }
+    },
+    "gperf": {
+      "type": "package",
+      "os": [
+        "linux"
+      ],
+      "installer": {
+        "linux": "apt"
+      }
+    },
+    "python-is-python3": {
+      "type": "package",
+      "os": [
+        "linux"
+      ],
+      "installer": {
+        "linux": "apt"
+      }
+    },
+    "python-setuptools": {
+      "type": "package",
+      "os": [
+        "linux"
+      ],
+      "installer": {
+        "linux": "apt"
+      }
+    },
+    "ccache": {
+      "type": "package",
+      "os": [
+        "linux"
+      ],
+      "installer": {
+        "linux": "apt"
+      }
+    },
+    "libffi-dev": {
+      "type": "package",
+      "os": [
+        "linux"
+      ],
+      "installer": {
+        "linux": "apt"
+      }
+    },
+    "libssl-dev": {
+      "type": "package",
+      "os": [
+        "linux"
+      ],
+      "installer": {
+        "linux": "apt"
+      }
+    },
+    "esp-idf-tools-setup-online-2.15.exe": {
+      "type": "download",
+      "os": [
+        "windows"
+      ],
+      "source": "https://github.com/espressif/idf-installer/releases/download/online-2.15/esp-idf-tools-setup-online-2.15.exe"
+    }
+  }
+}

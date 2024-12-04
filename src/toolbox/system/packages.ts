@@ -1,6 +1,6 @@
 import type { Dependency } from './types'
 import { execWithSudo } from '../system/exec'
-import { system } from 'gluegun'
+import { print, system } from 'gluegun'
 
 /**
  * Check if the list of dependencies are installed on the system.
@@ -33,8 +33,16 @@ export async function findMissingDependencies(
 export async function installPackages(
   packages: Array<Dependency>,
 ): Promise<void> {
-  await execWithSudo(
-    `apt-get install --yes ${packages.map((p) => p.packageName).join(' ')}`,
-    { stdout: process.stdout },
-  )
+  const packageManager = system.which('apt')
+
+  if (packageManager !== null && packageManager !== undefined) {
+    await execWithSudo(
+      `${packageManager} install --yes ${packages.map((p) => p.packageName).join(' ')}`,
+      { stdout: process.stdout },
+    )
+  } else {
+    print.warning('xs-dev attempted to install dependencies, but your Linux distribution is not yet supported')
+    print.warning(`Please install these dependencies before running this command again: ${packages.map((p) => p.packageName).join(', ')}`)
+    process.exit(1)
+  }
 }

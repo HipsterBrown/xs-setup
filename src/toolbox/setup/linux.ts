@@ -52,19 +52,18 @@ export default async function ({
     { name: 'make', packageName: 'make', type: 'binary' },
     { name: 'wget', packageName: 'wget', type: 'binary' },
     { name: 'ncurses', packageName: 'libncurses-dev', type: 'library' },
-    { name: 'gtk+-3.0', packageName: 'libgtk-3-dev', type: 'library' },
-    { name: 'blah', packageName: 'blahdev', type: 'library' },
+    { name: 'gtk+-3.0', packageName: 'libgtk-3-dev', type: 'library' }
   ]
 
   spinner.start('Checking for missing dependencies...')
   const missingDependencies = await findMissingDependencies(dependencies)
 
   // 1. Install or update the packages required to compile:
+  spinner.start('Attempting to install dependencies...')
   if (missingDependencies.length !== 0) {
-    spinner.start('Installing dependencies...')
     await installPackages(missingDependencies)
-    spinner.succeed()
   }
+  spinner.succeed()
 
   // 3. Download the Moddable repository, or use the git command line tool as follows:
   if (filesystem.exists(INSTALL_PATH) !== false) {

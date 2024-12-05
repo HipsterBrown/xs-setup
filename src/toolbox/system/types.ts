@@ -1,5 +1,5 @@
 export type Dependency = {
   name: string
   packageName: string
-  type: 'binary' | 'library'
+  type: 'binary' | 'library' | 'pylib'
 }

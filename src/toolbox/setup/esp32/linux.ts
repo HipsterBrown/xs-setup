@@ -1,13 +1,31 @@
 import type { GluegunPrint } from 'gluegun'
-import { execWithSudo } from '../../system/exec'
+import type { Dependency } from '../../system/types'
+import { findMissingDependencies, installPackages } from '../../system/packages'
 
-// apt-get install git wget flex bison gperf python-is-python3 python3-pip python3-serial python-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util
 export async function installDeps(
   spinner: ReturnType<GluegunPrint['spin']>,
 ): Promise<void> {
-  await execWithSudo(
-    'apt-get install --yes git wget flex bison gperf python-is-python3 python3-pip python3-serial python3-setuptools cmake ninja-build ccache libffi-dev libssl-dev dfu-util',
-    { stdout: process.stdout },
-  )
+  const dependencies: Array<Dependency> = [
+    { name: 'bison', packageName: 'bison', type: 'binary' },
+    { name: 'ccache', packageName: 'ccache', type: 'binary' },
+    { name: 'cmake', packageName: 'cmake', type: 'binary' },
+    { name: 'dfu-util', packageName: 'dfu-util', type: 'binary' },
+    { name: 'flex', packageName: 'flex', type: 'binary' },
+    { name: 'git', packageName: 'git', type: 'binary' },
+    { name: 'gperf', packageName: 'gperf', type: 'binary' },
+    { name: 'libffi', packageName: 'libffi-dev', type: 'library' },
+    { name: 'libssl', packageName: 'libssl-dev', type: 'library' },
+    { name: 'ninja', packageName: 'ninja-build', type: 'binary' },
+    { name: 'pip', packageName: 'python-pip', type: 'binary' },
+    { name: 'pyserial-miniterm', packageName: 'python3-serial', type: 'binary' },
+    { name: 'python', packageName: 'python-is-python3', type: 'binary' },
+    { name: 'setuptools', packageName: 'python3-setuptools', type: 'pylib' },
+    { name: 'wget', packageName: 'wget', type: 'binary' },
+  ]
+
+  const missingDependencies = await findMissingDependencies(dependencies)
+  if (missingDependencies.length !== 0) {
+    await installPackages(missingDependencies)
+  }
   spinner.succeed()
 }

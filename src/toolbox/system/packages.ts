@@ -15,9 +15,17 @@ export async function findMissingDependencies(
       if (system.which(dep.name) === null) {
         missingDependencies.push(dep)
       }
-    } else {
+    }
+    if (dep.type == 'library') {
       try {
         await system.run(`pkg-config --exists ${dep.name}`)
+      } catch (error) {
+        missingDependencies.push(dep)
+      }
+    }
+    if (dep.type == 'pylib') {
+      try {
+        await system.run(`pip3 info %{dep.name}`)
       } catch (error) {
         missingDependencies.push(dep)
       }

@@ -2,7 +2,7 @@ import os from 'os'
 import { promisify } from 'util'
 import { chmod } from 'fs'
 import { filesystem, print, system } from 'gluegun'
-import { INSTALL_PATH, EXPORTS_FILE_PATH, XSBUG_LOG_PATH } from './constants'
+import { INSTALL_DIR, INSTALL_PATH, EXPORTS_FILE_PATH, XSBUG_LOG_PATH } from './constants'
 import upsert from '../patching/upsert'
 import { execWithSudo } from '../system/exec'
 import { findMissingDependencies, installPackages } from '../system/packages'
@@ -41,6 +41,8 @@ export default async function ({
 
   const spinner = print.spin()
   spinner.start('Beginning setup...')
+
+  filesystem.dir(INSTALL_DIR)
 
   // 0. check for the required build tools and libraries
   const dependencies: Array<Dependency> = [

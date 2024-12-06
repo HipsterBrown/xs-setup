@@ -9,19 +9,19 @@ export async function findMissingDependencies(dependencies: Dependency[]): Promi
   const missingDependencies: Dependency[] = []
 
   for (const dep of dependencies) {
-    if (dep.type == 'binary') {
+    if (dep.type === 'binary') {
       if (system.which(dep.name) === null) {
         missingDependencies.push(dep)
       }
     }
-    if (dep.type == 'library') {
+    if (dep.type === 'library') {
       try {
         await system.run(`pkg-config --exists ${dep.name}`)
       } catch (error) {
         missingDependencies.push(dep)
       }
     }
-    if (dep.type == 'pylib') {
+    if (dep.type === 'pylib') {
       try {
         await system.run(`pip3 info %{dep.name}`)
       } catch (error) {

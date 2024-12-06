@@ -1,6 +1,6 @@
 import type { XSDevToolbox } from '../types'
 import updateMac from '../toolbox/update/mac'
-import updateLinux from '../toolbox/update/linux'
+import updateLinux from '../toolbox/update/lin'
 import updateWindows from '../toolbox/update/windows'
 import updateESP8266 from '../toolbox/update/esp8266'
 import updateESP32 from '../toolbox/update/esp32'

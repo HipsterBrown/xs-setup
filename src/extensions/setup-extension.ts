@@ -1,6 +1,6 @@
 import type { XSDevToolbox } from '../types'
 import setupMac from '../toolbox/setup/mac'
-import setupLinux from '../toolbox/setup/linux'
+import setupLinux from '../toolbox/setup/lin'
 import setupWindows from '../toolbox/setup/windows'
 import setupESP8266 from '../toolbox/setup/esp8266'
 import setupESP32 from '../toolbox/setup/esp32'

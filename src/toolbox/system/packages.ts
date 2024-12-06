@@ -5,12 +5,10 @@ import { print, system } from 'gluegun'
 /**
  * Check if the list of dependencies are installed on the system.
  **/
-export async function findMissingDependencies(
-  dependencies: Array<Dependency>,
-): Promise<Array<Dependency>> {
-  let missingDependencies: Array<Dependency> = []
+export async function findMissingDependencies(dependencies: Dependency[]): Promise<Dependency[]> {
+  const missingDependencies: Dependency[] = []
 
-  for (let dep of dependencies) {
+  for (const dep of dependencies) {
     if (dep.type == 'binary') {
       if (system.which(dep.name) === null) {
         missingDependencies.push(dep)
@@ -38,9 +36,7 @@ export async function findMissingDependencies(
 /**
  * Attempt to install packages on the linux platform.
  **/
-export async function installPackages(
-  packages: Array<Dependency>,
-): Promise<void> {
+export async function installPackages(packages: Dependency[]): Promise<void> {
   const packageManager = system.which('apt')
 
   if (packageManager !== null && packageManager !== undefined) {
@@ -49,8 +45,12 @@ export async function installPackages(
       { stdout: process.stdout },
     )
   } else {
-    print.warning('xs-dev attempted to install dependencies, but your Linux distribution is not yet supported')
-    print.warning(`Please install these dependencies before running this command again: ${packages.map((p) => p.packageName).join(', ')}`)
+    print.warning(
+      'xs-dev attempted to install dependencies, but your Linux distribution is not yet supported',
+    )
+    print.warning(
+      `Please install these dependencies before running this command again: ${packages.map((p) => p.packageName).join(', ')}`,
+    )
     process.exit(1)
   }
 }

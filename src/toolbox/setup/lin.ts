@@ -45,7 +45,7 @@ export default async function ({
   filesystem.dir(INSTALL_DIR)
 
   // 0. check for the required build tools and libraries
-  const dependencies: Array<Dependency> = [
+  const dependencies: Dependency[] = [
     { name: 'bison', packageName: 'bison', type: 'binary' },
     { name: 'flex', packageName: 'flex', type: 'binary' },
     { name: 'gcc', packageName: 'gcc', type: 'binary' },

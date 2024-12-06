@@ -6,7 +6,7 @@ export async function installDeps(
   spinner: ReturnType<GluegunPrint['spin']>,
 ): Promise<void> {
   spinner.start('Installing python deps with apt-get')
-  const dependencies: Array<Dependency> = [
+  const dependencies: Dependency[] = [
     { name: 'pip', packageName: 'python-pip', type: 'binary' },
     { name: 'pyserial-miniterm', packageName: 'python3-serial', type: 'binary' },
     { name: 'python', packageName: 'python-is-python3', type: 'binary' },

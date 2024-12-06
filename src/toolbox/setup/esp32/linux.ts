@@ -5,7 +5,7 @@ import { findMissingDependencies, installPackages } from '../../system/packages'
 export async function installDeps(
   spinner: ReturnType<GluegunPrint['spin']>,
 ): Promise<void> {
-  const dependencies: Array<Dependency> = [
+  const dependencies: Dependency[] = [
     { name: 'bison', packageName: 'bison', type: 'binary' },
     { name: 'ccache', packageName: 'ccache', type: 'binary' },
     { name: 'cmake', packageName: 'cmake', type: 'binary' },

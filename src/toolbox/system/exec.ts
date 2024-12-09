@@ -37,6 +37,13 @@ export async function execWithSudo(
   await system.exec(`sudo --askpass --preserve-env ${command}`, options)
 }
 
+export async function pkexec(
+  command: string,
+  options: Record<string, unknown> = {},
+): Promise <void> {
+  await system.exec(`pkexec ${command}`, options)
+}
+
 /**
  * Utility for updating in-memory process.env after running a command
  */

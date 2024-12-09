@@ -23,7 +23,7 @@ export async function findMissingDependencies(dependencies: Dependency[]): Promi
     }
     if (dep.type === 'pylib') {
       try {
-        await system.run(`pip3 info %{dep.name}`)
+        await system.run(`pip3 show ${dep.name}`)
       } catch (error) {
         missingDependencies.push(dep)
       }
